@@ -5,7 +5,8 @@ from . import views
 
 # 첫 번째 URL 패턴을 추가
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
+    path('', views.post_index, name='post_index'),
+    path('list', views.post_list, name='post_list'),
 ]
 
 '''

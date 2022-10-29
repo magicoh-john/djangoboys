@@ -18,7 +18,10 @@ from django.urls import path, include
 
 # http://127.0.0.1:8000/ 로 들어오는 모든 접속 요청을 blog.urls 로 전송해 추가 명령을 찾을 거예요.
 urlpatterns = [
+    # 장고는 admin/이라는 요청에 맞는 핸들러(메소드)를 view에서 찾게됨 #
     path("admin/", admin.site.urls),
-    path('', include('blog.urls')),
+    # 127.0.0.1/ 이런 형태의 기본 요청이 오면 blog앱의 urls.py파일로 위임시킨다. #
+
+    path('blog/', include('blog.urls')),
 
 ]

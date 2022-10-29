@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 # Application definition
 
+# 추가된 앱(blog)을 등록
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
