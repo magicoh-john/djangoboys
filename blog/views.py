@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -39,6 +39,7 @@ def post_detail(request, pk):
 # 게시물 작성 폼을 보여주는 핸들러(뷰 메소드) 추가
 # 폼을 불러올때, submit할때, 둘다 이 뷰를 사용함.
 # 이때 request에는 우리가 입력했던 데이터들이 들어있음.
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -59,6 +60,7 @@ def post_new(request):
 # get_object_or_404(Post, pk=pk)를 호출하여 수정하고자 하는 글의 Post 모델 인스턴스(instance)를 가져옵니다.
 # 즉, pk 로 원하는 글을 찾는다.
 # 이렇게 가져온 데이터를 수정 폼을 띄울때 보여주고 또 저장할 때도 이 메소드(뷰)를 사용해서 처리한다.
+@login_required
 def post_edit(request, pk):
     # 수정하고자 하는 글의 게시물에 해당하는 Post 모델 인스턴스(instance)를 데이터베이스에서 가져옴
     post = get_object_or_404(Post, pk=pk)
