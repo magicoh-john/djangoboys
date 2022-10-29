@@ -22,6 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # 127.0.0.1/ 이런 형태의 기본 요청이 오면 blog앱의 urls.py파일로 위임시킨다. #
 
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
+    # path('blog/', include('blog.urls')),
 
 ]
