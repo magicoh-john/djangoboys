@@ -8,8 +8,6 @@ from django.utils import timezone
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 
 # post_index 뷰(view)
 def post_index(request):
@@ -23,16 +21,9 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
-'''
-방금 post_list 라는 함수는 요청(request) 을 넘겨받아 render 메서드를 호출합니다. 이 함수는
-render 메서드를 호출하여 받은(return) blog/post_list.html 템플릿을 보여줍니다.
-
-'''
-
-
 # 게시물 상세 페이지 처리 핸들러(뷰)
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def post_detail(request, pk3):
+    post = get_object_or_404(Post, pk=pk3) # pk 대신 id를 써도 됨.
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
@@ -60,7 +51,6 @@ def post_new(request):
 # get_object_or_404(Post, pk=pk)를 호출하여 수정하고자 하는 글의 Post 모델 인스턴스(instance)를 가져옵니다.
 # 즉, pk 로 원하는 글을 찾는다.
 # 이렇게 가져온 데이터를 수정 폼을 띄울때 보여주고 또 저장할 때도 이 메소드(뷰)를 사용해서 처리한다.
-@login_required
 def post_edit(request, pk):
     # 수정하고자 하는 글의 게시물에 해당하는 Post 모델 인스턴스(instance)를 데이터베이스에서 가져옴
     post = get_object_or_404(Post, pk=pk)
